@@ -74,14 +74,5 @@ pipeline {
             }
         }
     }
-     post {
-        always {
-            // Publish code coverage report to Jenkins
-            jacoco()
-            
-            // Define code coverage criteria (line and branch coverage)
-            def lineCoverageThreshold = 80
-            def branchCoverageThreshold = 70
-        }
-     }
+     
 }
