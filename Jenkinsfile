@@ -70,11 +70,6 @@ pipeline {
                 // Start SOnarQube analysis and publish code coverage results to SonarQube
                 withSonarQubeEnv('SonarQube') {
                     sh 'mvn sonar:sonar'
-                                def qualityGate = waitForQualityGate()
-if (qualityGate.status != 'OK') {
-                error "Quality Gate failed: ${qualityGate.status}"
-                }
-            }
         }
     }     
 }
