@@ -69,7 +69,7 @@ pipeline {
                 
                 // Start SOnarQube analysis and publish code coverage results to SonarQube
                 withSonarQubeEnv('SonarQube') {
-                    sh "mvn sonar:sonar -Dsonar.projectKey=JacocoExample-new-1 -Dsonar.projectName='JacocoExample-new-1'"
+                    sh "mvn sonar:sonar -Dsonar.projectKey=JacocoExample-new -Dsonar.projectName='JacocoExample-new'"
         }
                
 }
