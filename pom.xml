@@ -24,8 +24,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
-	  <profiles>
+	<profiles>
     <profile>
       <id>sonarqube</id>
       <activation>
@@ -39,6 +38,8 @@
       </properties>
     </profile>
   </profiles>
+	
+  <build>
   	<plugins>
   		<plugin>
     <groupId>org.jacoco</groupId>
