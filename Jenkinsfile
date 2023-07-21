@@ -74,6 +74,11 @@ pipeline {
                
 }
 }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
    //    post {
 //        always {
             // Configure the SonarQube Quality Gate
