@@ -63,15 +63,13 @@ pipeline {
             steps {
                 // Set up Jacoco for code coverage
                 sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test'
-                // This assumes you are using Maven. If you are using a different build tool,
-                // replace the command accordingly.
                 
                 // Generate code coverage report
                 sh 'mvn org.jacoco:jacoco-maven-plugin:report'
                 
-                // Publish code coverage results to SonarQube
+                // Start SOnarQube analysis and publish code coverage results to SonarQube
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=onlinebookstore:onlinebookstore'
+                    sh 'mvn sonar:sonar'
                 }
             }
         }
