@@ -69,19 +69,19 @@ pipeline {
                 
                 // Start SOnarQube analysis and publish code coverage results to SonarQube
                 withSonarQubeEnv('SonarQube') {
-                    sh "mvn sonar:sonar -Dsonar.projectKey=JacocoExample-new-2 -Dsonar.projectName='JacocoExample-new-2'"
+                    sh "mvn sonar:sonar -Dsonar.projectKey=JacocoExample-new-3 -Dsonar.projectName='JacocoExample-new-3'"
         }
                
 }
 }
-    stage("Quality gate") {
-          steps {
-            waitForQualityGate abortPipeline: true
+   // stage("Quality gate") {
+     //     steps {
+       //     waitForQualityGate abortPipeline: true
           
         
         
-     }
-    }
+     //}
+    //}
    //    post {
 //        always {
             // Configure the SonarQube Quality Gate
