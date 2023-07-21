@@ -78,3 +78,4 @@ if (qualityGate.status != 'OK') {
         }
     }     
 }
+}
