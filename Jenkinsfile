@@ -74,5 +74,15 @@ pipeline {
                
 }
 }
-   
+   //    post {
+//        always {
+            // Configure the SonarQube Quality Gate
+  //          script {
+    //            def qg = waitForQualityGate()
+      //          if (qg.status != 'OK') {
+        //            error "Pipeline failed due to Quality Gate status: ${qg.status}"
+          //      }
+            //}
+       // }
+    //}
 }
