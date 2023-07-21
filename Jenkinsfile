@@ -74,5 +74,16 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            // Define your Quality Gate criteria
+            def qualityGate = waitForQualityGate()
+
+            // Check if the Quality Gate status is "OK" or "ERROR"
+            if (qualityGate.status != 'OK') {
+                error "Quality Gate failed: ${qualityGate.status}"
+            }
+        }
+    }
      
 }
