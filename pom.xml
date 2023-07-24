@@ -31,7 +31,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <!-- SonarQube server URL -->
+        <!-- SonarQube server URL ... copy the token from sonarqube webhook page to authenticate and receive response from quality gate-->
         <sonar.host.url>http://54.159.200.51:9000/</sonar.host.url>
 	        <sonar.login>squ_d140440e1fe340af5817a129385560cd6aca3bea</sonar.login>
 
