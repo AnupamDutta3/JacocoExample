@@ -37,6 +37,21 @@ pipeline {
                 )
             }
         }
+        stage('Code Coverage and SonarQube Analysis') {
+            steps {
+                // Set up Jacoco for code coverage
+                sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test'
+                
+                // Generate code coverage report
+                sh 'mvn org.jacoco:jacoco-maven-plugin:report'
+                
+                // Start SOnarQube analysis and publish code coverage results to SonarQube
+                withSonarQubeEnv('SonarQube') {
+                    sh "mvn sonar:sonar -Dsonar.projectKey=JacocoExample-new-3 -Dsonar.projectName='JacocoExample-new-3'"
+        }
+               
+}
+}
         stage('Upload'){
             steps{
                 rtUpload (
@@ -59,21 +74,7 @@ pipeline {
                 )
             }
         }
-        stage('Code Coverage and SonarQube Analysis') {
-            steps {
-                // Set up Jacoco for code coverage
-                sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test'
-                
-                // Generate code coverage report
-                sh 'mvn org.jacoco:jacoco-maven-plugin:report'
-                
-                // Start SOnarQube analysis and publish code coverage results to SonarQube
-                withSonarQubeEnv('SonarQube') {
-                    sh "mvn sonar:sonar -Dsonar.projectKey=JacocoExample-new-3 -Dsonar.projectName='JacocoExample-new-3'"
-        }
-               
-}
-}
+        
    // stage("Quality gate") {
      //     steps {
        //     waitForQualityGate abortPipeline: true
