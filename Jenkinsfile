@@ -32,8 +32,8 @@ pipeline {
                 rtMavenDeployer(
                     id: 'Jfrog', 
                     serverId: 'Jfrog', 
-                    releaseRepo: 'example-repo-local', 
-                    snapshotRepo: 'example-repo-local'
+                    releaseRepo: 'example-repo-local/', 
+                    snapshotRepo: 'example-repo-local/'
                 )
             }
         }
@@ -59,7 +59,7 @@ pipeline {
                   spec: '''{
                    "files": [
                       {
-                      "pattern": "*.war",
+                      "pattern": "*.jar",
                       "target": "example-repo-local/"
                       }
                             ]
