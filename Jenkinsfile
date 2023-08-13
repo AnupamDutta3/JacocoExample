@@ -32,8 +32,31 @@ pipeline {
                 rtMavenDeployer(
                     id: 'Jfrog', 
                     serverId: 'Jfrog', 
-                    releaseRepo: 'example-repo-local/', 
-                    snapshotRepo: 'example-repo-local/'
+                    releaseRepo: 'Repo-1/', 
+                    snapshotRepo: 'Repo-1/'
+                )
+            }
+        }
+        
+        stage('Upload'){
+            steps{
+                rtUpload (
+                 serverId:"Jfrog",
+                  spec: '''{
+                   "files": [
+                      {
+                      "pattern": "*.jar",
+                      "target": "Repo-1/"
+                      }
+                            ]
+                           }''',
+                        )
+            }
+        }
+        stage ('Publish build info') {
+            steps {
+                rtPublishBuildInfo (
+                    serverId: "Jfrog"
                 )
             }
         }
@@ -52,28 +75,6 @@ pipeline {
                
 }
 }
-        stage('Upload'){
-            steps{
-                rtUpload (
-                 serverId:"Jfrog",
-                  spec: '''{
-                   "files": [
-                      {
-                      "pattern": "*.jar",
-                      "target": "example-repo-local/"
-                      }
-                            ]
-                           }''',
-                        )
-            }
-        }
-        stage ('Publish build info') {
-            steps {
-                rtPublishBuildInfo (
-                    serverId: "Jfrog"
-                )
-            }
-        }
         
    // stage("Quality gate") {
      //     steps {
